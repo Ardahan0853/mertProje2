@@ -93,6 +93,8 @@
                 </ul>
             </div>
         @endif
+
+        <p>allah</p>
     </div>
 </nav>
 
