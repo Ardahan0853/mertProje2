@@ -60,7 +60,7 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg bg-white shadow-sm">
     <div class="container">
-        <a class="navbar-brand fw-bold" href="#">Maya Cafe</a>
+        <a class="navbar-brand fw-bold" href="{{ route('anasayfa') }}">Maya Cafe</a>
         <div class="navbar-collapse justify-content-end">
             <ul class="navbar-nav">
                 <li class="nav-item"><a class="nav-link" href="{{ route('anasayfa') }}">Anasayfa</a></li>
