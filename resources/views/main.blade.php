@@ -92,9 +92,8 @@
                     <li class="nav-item"><a class="nav-link" href="{{route('register')}}">Kayıt</a></li>
                 </ul>
             </div>
+             <p>Oturum kapalı</p>
         @endif
-
-        <p>allah</p>
     </div>
 </nav>
 
