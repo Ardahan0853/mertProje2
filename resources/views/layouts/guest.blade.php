@@ -55,23 +55,34 @@
         }
     </style>
 </head>
-<body>
+<body style="height: 100vh;" class="d-flex flex-column justify-content-between">
 
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg bg-white shadow-sm">
     <div class="container">
         <a class="navbar-brand fw-bold" href="#">Maya Cafe</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <div class="navbar-collapse justify-content-end">
             <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="{{route('anasayfa')}}">Anasayfa</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{route('menu')}}">Menü</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{route('hakkimizda')}}">Hakkımızda</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">İletişim</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{route('login')}}">Giriş</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{route('register')}}">Kayıt</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('anasayfa') }}">Anasayfa</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('menu') }}">Menü</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('hakkimizda') }}">Hakkımızda</a></li>
+
+                @if(auth()->check())
+                    <li class="nav-item nav-text"><a class="nav-link" disabled>Hoşgeldin, {{ auth()->user()->name }}</a>
+                    </li>
+                    <li class="nav-item d-flex align-items-center">
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit" class="nav-link btn btn-link"
+                                    style="display:inline; padding:0; border:none;">
+                                Çıkış Yap
+                            </button>
+                        </form>
+                    </li>
+                @else
+                    <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Giriş</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Kayıt</a></li>
+                @endif
             </ul>
         </div>
     </div>
@@ -86,7 +97,7 @@
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-<footer class="text-white py-5" style="background-color: #3b2e2a; font-family: 'Poppins', sans-serif; height: 400px">
+<footer class="text-white py-5" style="background-color: #3b2e2a; font-family: 'Poppins', sans-serif; height: 300px">
     <div class="container">
         <div class="row gy-4">
             <!-- Sol kısım -->

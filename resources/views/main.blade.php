@@ -68,8 +68,8 @@
                 <li class="nav-item"><a class="nav-link" href="{{ route('hakkimizda') }}">Hakkımızda</a></li>
 
                 @if(auth()->check())
-                    <li class="nav-item nav-text">Hoşgeldin, {{ auth()->user()->name }}</li>
-                    <li class="nav-item">
+                    <li class="nav-item nav-text"><a class="nav-link" disabled>Hoşgeldin, {{ auth()->user()->name }}</a></li>
+                    <li class="nav-item d-flex align-items-center">
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
                             <button type="submit" class="nav-link btn btn-link" style="display:inline; padding:0; border:none;">
