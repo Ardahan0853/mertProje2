@@ -61,41 +61,31 @@
 <nav class="navbar navbar-expand-lg bg-white shadow-sm">
     <div class="container">
         <a class="navbar-brand fw-bold" href="#">Maya Cafe</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        @if(auth()->check())
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="{{route('anasayfa')}}">Anasayfa</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{route('menu')}}">Menü</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{route('hakkimizda')}}">Hakkımızda</a></li>
-                    <span class="navbar-text ms-auto">Hoşgeldin, {{ auth()->user()->name }}</span>
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
+        <div class="navbar-collapse justify-content-end">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="{{ route('anasayfa') }}">Anasayfa</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('menu') }}">Menü</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('hakkimizda') }}">Hakkımızda</a></li>
 
-                        <a class="nav-link" href="{{route('logout')}}"
-                                         onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                            {{ __('Çıkış Yap') }}
-                        </a>
-                    </form>
-                </ul>
-            </div>
-        @else
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="{{route('anasayfa')}}">Anasayfa</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{route('menu')}}">Menü</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{route('hakkimizda')}}">Hakkımızda</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{route('login')}}">Giriş</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{route('register')}}">Kayıt</a></li>
-                </ul>
-            </div>
-             <p>Oturum kapalı</p>
-        @endif
+                @if(auth()->check())
+                    <li class="nav-item nav-text">Hoşgeldin, {{ auth()->user()->name }}</li>
+                    <li class="nav-item">
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit" class="nav-link btn btn-link" style="display:inline; padding:0; border:none;">
+                                Çıkış Yap
+                            </button>
+                        </form>
+                    </li>
+                @else
+                    <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Giriş</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Kayıt</a></li>
+                @endif
+            </ul>
+        </div>
     </div>
 </nav>
+
 
 @yield('content')
 
