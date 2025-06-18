@@ -1,8 +1,11 @@
 @extends('main')
 
 @section('content')
-    <section class="hero-section position-relative py-5">
-        <div class="hero-overlay"></div>
+    <section class="hero-section position-relative py-5"
+    style="background-image: url({{ asset('images/anasayfabackgroundimage.webp') }});
+           background-size: cover;
+           background-position: center;
+           background-attachment: fixed;">
         <div class="container position-relative z-1 py-5">
             <div class="row align-items-center">
 
